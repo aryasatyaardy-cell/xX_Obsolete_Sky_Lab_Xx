@@ -6,3 +6,4 @@ This website is made to simulate an expirience as NASA historian that can look u
 - A welcome app as a welcome from my site
 - A calculator app to calculate math stuff
 
+The minimize button also work to save opened app that you didn't close
