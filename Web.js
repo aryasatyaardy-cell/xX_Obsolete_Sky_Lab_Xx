@@ -55,6 +55,7 @@ Loading()
 // Make the DIV element draggable:
 
 dragElement(document.getElementById("WelcomeTab"));
+dragElement(document.getElementById("CalculatorTab"));
 
 function dragElement(elmnt) {
 
@@ -87,43 +88,26 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
-
     e = e || window.event;
     e.preventDefault();
 
-    // Calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
 
     pos3 = e.clientX;
     pos4 = e.clientY;
 
-    // Calculate new position:
     let newTop = elmnt.offsetTop - pos2;
     let newLeft = elmnt.offsetLeft - pos1;
 
-    // Header height
     const headerHeight = 120;
 
-    // Don't let the tab enter the header
     newTop = Math.max(newTop, headerHeight);
+    newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - elmnt.offsetWidth));
+    newTop = Math.min(newTop, window.innerHeight - elmnt.offsetHeight);
 
-    // Don't let the tab leave the left/right side
-    newLeft = Math.max(
-      0,
-      Math.min(newLeft, window.innerWidth - elmnt.offsetWidth)
-    );
-
-    // Don't let the tab leave the bottom
-    newTop = Math.min(
-      newTop,
-      window.innerHeight - elmnt.offsetHeight
-    );
-
-    // Apply position
-    elmnt.style.top = newTop + "px";
+    elmnt.style.top = (newTop - 120) + "px"; // offset for margin-top
     elmnt.style.left = newLeft + "px";
-
   }
 
   function closeDragElement() {
@@ -136,23 +120,50 @@ function dragElement(elmnt) {
 
 }
 
-function CloseTab() {
-  var element = document.querySelector("#Tab")
-
+function MinimizeWelcomeTab() {
+  var element = document.querySelector("#WelcomeTab")
   element.style.display = "none"
-}
-
-function OpenWelcomeTab() {
-  
-
-  var Tab = document.querySelector("#WelcomeTab")
-  Tab.style.display = "flex"
 }
 
 function CloseWelcomeTab() {
   var element = document.querySelector("#WelcomeTab")
+  element.style.display = "none"
 
+    var element = document.querySelector(".Footer #WelcomeApp")
   element.style.display = "none"
 }
 
 CloseWelcomeTab()
+
+function OpenWelcomeTab() {
+  var Tab = document.querySelector("#WelcomeTab")
+  Tab.style.display = "flex"
+
+  var element = document.querySelector(".Footer #WelcomeApp")
+  element.style.display = "flex"
+}
+
+/* * * * * * *  * * * * * ** * * * ** * ** */
+
+function MinimizeCalculatorTab() {
+  var element = document.querySelector("#CalculatorTab")
+  element.style.display = "none"
+}
+
+function CloseCalculatorTab() {
+  var element = document.querySelector("#CalculatorTab")
+  element.style.display = "none"
+
+    var element = document.querySelector(".Footer #CalculatorApp")
+  element.style.display = "none"
+}
+
+CloseCalculatorTab()
+
+function OpenCalculatorTab() {
+  var Tab = document.querySelector("#CalculatorTab")
+  Tab.style.display = "flex"
+
+  var element = document.querySelector(".Footer #CalculatorApp")
+  element.style.display = "flex"
+}
