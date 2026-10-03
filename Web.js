@@ -56,6 +56,7 @@ Loading()
 
 dragElement(document.getElementById("WelcomeTab"));
 dragElement(document.getElementById("CalculatorTab"));
+dragElement(document.getElementById("CreditTab"));
 
 function dragElement(elmnt) {
 
@@ -120,6 +121,24 @@ function dragElement(elmnt) {
 
 }
 
+/********************************************************/
+
+
+/******************************************************/
+
+function OpenWelcomeTab() {
+  var Tab = document.querySelector("#WelcomeTab")
+  Tab.style.display = "flex"
+
+  var element = document.querySelector(".Footer #WelcomeApp")
+  element.style.display = "flex"
+
+  tab.classList.remove("pop");
+  void tab.offsetWidth; // forces a reflow so the animation can replay
+  tab.classList.add("pop");
+}
+
+
 function MinimizeWelcomeTab() {
   var element = document.querySelector("#WelcomeTab")
   element.style.display = "none"
@@ -135,13 +154,6 @@ function CloseWelcomeTab() {
 
 CloseWelcomeTab()
 
-function OpenWelcomeTab() {
-  var Tab = document.querySelector("#WelcomeTab")
-  Tab.style.display = "flex"
-
-  var element = document.querySelector(".Footer #WelcomeApp")
-  element.style.display = "flex"
-}
 
 /* * * * * * *  * * * * * ** * * * ** * ** */
 
@@ -165,5 +177,30 @@ function OpenCalculatorTab() {
   Tab.style.display = "flex"
 
   var element = document.querySelector(".Footer #CalculatorApp")
+  element.style.display = "flex"
+}
+
+/* * * * * * *  * * * * * ** * * * ** * ** */
+
+function MinimizeCreditTab() {
+  var element = document.querySelector("#CreditTab")
+  element.style.display = "none"
+}
+
+function CloseCreditTab() {
+  var element = document.querySelector("#CreditTab")
+  element.style.display = "none"
+
+    var element = document.querySelector(".Footer #CreditApp")
+  element.style.display = "none"
+}
+
+CloseCreditTab()
+
+function OpenCreditTab() {
+  var Tab = document.querySelector("#CreditTab")
+  Tab.style.display = "flex"
+
+  var element = document.querySelector(".Footer #CreditApp")
   element.style.display = "flex"
 }

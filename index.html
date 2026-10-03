@@ -15,30 +15,46 @@
 </head>
 
 <body>
-
+  <!--
   <div class="Loading">
     <h1>Selamat Datang</h1>
     <h2>Press "Space" to proceed</h2>
   </div>
-
+  -->
 
   <div class="Header">
-    <img src="SpaceAppChallengeLogo.svg">
+    <img src="Assets/SpaceAppChallengeLogo.svg">
 
     <div class="Time">
       <h1 id="Time"></h1>
     </div>
   </div>
 
-  <div class="App">
-    <button id="WelcomeApp" onclick="OpenWelcomeTab()">
-      <h1>Hi</h1>
-    </button>
+  <div class="AppGrid">
 
-    <button id="CalculatorApp" onclick="OpenCalculatorTab()">
-      <img src="Calculator.png">
-    </button>
+    <div class="App">
+      <button id="WelcomeApp" onclick="OpenWelcomeTab(); OpenWelcomeTabSavedOpen()">
+        <h1>Hi</h1>
+      </button>
+      <h2>About</h2>
+    </div>
+
+    <div class="App">
+      <button id="CalculatorApp" onclick="OpenCalculatorTab()">
+        <img src="Assets/Calculator.png">
+      </button>
+      <h2>Calculator</h2>
+    </div>
+
+    <div class="App">
+      <button id="CreditApp" onclick="OpenCreditTab()">
+        <img src="Assets/Icons.png">
+      </button>
+      <h2>Credits</h2>
+    </div>
+
   </div>
+
 
   <div id="WelcomeTab">
 
@@ -49,8 +65,18 @@
     </div>
 
     <div id="WelcomeTabBody">
-      <h1>Welcome to my site</h1>
+
+      <img src="Assets/SpaceAppChallengeLogo.svg">
+      <h1>xX_Obsolete_Sky_Lab_Xx</h1>
+      <h2>A website project to give you a unique experience, explore past hardware that are now <span
+          class="Highlight">obsolete</span></h2>
+      <img id="ObsoleteImage" src="Assets/Obsolete.png">
+      <h2></h2>
+      <h2>You can use all the apps to help you learn about hardware technology of NASA that are now obsolete or no
+        longer in use. You can learn about their history, mission and any information about their functionality.</h2>
+
     </div>
+
   </div>
 
   <div id="CalculatorTab">
@@ -62,26 +88,64 @@
     </div>
 
     <div id="CalculatorBody">
-      <iframe width="219" height="302" src="https://calculator-1.com/outdoor/?f=666666&r=ffffff" scrolling="no" frameborder="0"></iframe><br /><a href="https://calculator-1.com/"></a>
+      <iframe width="219" height="302" src="https://calculator-1.com/outdoor/?f=666666&r=ffffff" scrolling="no"
+        frameborder="0"></iframe><br /><a href="https://calculator-1.com/"></a>
     </div>
+  </div>
+
+  <div id="CreditTab">
+
+    <div id="TabHeader">
+      <button id="MinimizeButton" onclick="MinimizeCreditTab()">-</button>
+      <button id="MaximizeButton" onclick="">O</button>
+      <button id="CloseButton" onclick="CloseCreditTab(), MinimizeCreditTab()">X</button>
+    </div>
+
+    <div id="CreditTabBody">
+
+      <h1>Credits</h1>
+      <div id="Creator">
+        <img src="Assets/Asta.png">
+
+        <div id="CreatorText">
+          <h1><span class="Bold">Sole Creator of this Site</span></h1>
+          <h2>Aryasatya Mahdiya Ardy (Asta)</h2>
+          <a href="https://engineering-portofolio-by-asta.netlify.app/" target="_blank">My Portofolio</a>
+        </div>
+      </div>
+
+      <div id="Asset">
+        <h1><span class="Bold">Assets Used</span></h1>
+
+        <div id="AssetText">
+          <a href="https://www.flaticon.com/free-icons/types" title="types icons" target="_blank">Credit icon</a>
+            <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons" target="_blank">Calculator icon</a>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
   <div class="FooterLock">
 
     <div class="Footer">
+
       <button id="WelcomeApp" onclick="OpenWelcomeTab()">
         <h1>Hi</h1>
       </button>
 
       <button id="CalculatorApp" onclick="OpenCalculatorTab()">
-      <img src="Calculator.png">
-    </button>
+        <img src="Assets/Calculator.png">
+      </button>
+
+      <button id="CreditApp" onclick="OpenCreditTab()">
+        <img src="Assets/Icons.png">
+      </button>
     </div>
 
   </div>
 
-  <a href="https://www.flaticon.com/free-icons/types" title="types icons">Types icons created by LAFS - Flaticon</a>
-  <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons">Calculator icons created by Wahyu.Setyanto - Flaticon</a>
 
 </body>
 
