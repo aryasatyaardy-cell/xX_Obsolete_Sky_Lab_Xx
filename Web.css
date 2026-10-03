@@ -236,6 +236,25 @@ body {
   transition: 0.2s;
 }
 
+#FooterWelcomeApp,
+#FooterCalculatorApp,
+#FooterCreditApp {
+  margin: 0px;
+  padding: 0px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  height: 50px;
+  width: 50px;
+
+  transition: 0.2s;
+}
+
+
 #WelcomeApp:hover,
 #CalculatorApp:hover,
 #CreditApp:hover,
@@ -291,6 +310,19 @@ button {
   margin: auto;
 }
 
+#FooterCalculatorApp img,
+#FooterWelcomeApp img,
+#FooterCreditApp img {
+  margin: auto;
+
+  height: 40px;
+  width: auto;
+}
+
+#FooterWelcomeApp h1 {
+  margin: auto;
+}
+
 /**************************************************/
 
 @keyframes PopOut {
@@ -308,9 +340,9 @@ button {
 }
 
 /**************************************************/
-#WelcomeTab,
-#CalculatorTab,
-#CreditTab {
+[class^="WelcomeTab"],
+[class^="CalculatorTab"],
+[class^="CreditTab"] {
   margin-top: 120px;
 
   flex-direction: column;
@@ -379,14 +411,9 @@ button {
   transition: 0.2s;
 }
 
-#WelcomeTabBody #ObsoleteImage:hover {
-  scale: calc(1.4);
+#WelcomeTabBody:has(#ObsoleteImage:hover) #ObsoleteImage {
+  scale: calc(1.3);
   box-shadow: 0 0 10px whitesmoke;
-}
-
-body:has(#ObsoleteImage:hover) #WelcomeTabBody {
-  width: 800px;
-  padding: 50px;
 }
 
 #WelcomeTabBody h1 {
@@ -448,7 +475,7 @@ body:has(#ObsoleteImage:hover) #WelcomeTabBody {
   margin: 20px;
 }
 
-#Creator{
+#Creator {
   margin: 20px;
   display: flex;
   flex-direction: row;
@@ -471,7 +498,7 @@ body:has(#ObsoleteImage:hover) #WelcomeTabBody {
   border: 2px solid rgb(250, 250, 250, 0.5);
 }
 
-#Creator #CreatorText h1{
+#Creator #CreatorText h1 {
   text-align: left;
 
   font-size: 25px;
@@ -501,7 +528,7 @@ body:has(#ObsoleteImage:hover) #WelcomeTabBody {
   text-align: left;
 }
 
-#Creator #CreatorText a{
+#Creator #CreatorText a {
   font-size: 20px;
   color: whitesmoke;
   margin-left: 20px;
@@ -517,7 +544,7 @@ body:has(#ObsoleteImage:hover) #WelcomeTabBody {
   transition: 0.2s;
 }
 
-#Asset #AssetText a{
+#Asset #AssetText a {
   font-size: 20px;
   color: whitesmoke;
 

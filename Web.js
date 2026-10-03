@@ -1,9 +1,128 @@
+var WelcomeTabCounter = 1;
+var WelcomeTab = true;
+
+function RemoveFooterWelcomeApp() { 
+var Tab = document.querySelector("#FooterWelcomeApp");
+    Tab.style.display = "none"
+    WelcomeTab = false;
+}
+
+RemoveFooterWelcomeApp();
+
+const WelcomeTabTemplate = document.querySelector("#WelcomeTabTemplate");
+
+const WelcomeTabPage = WelcomeTabTemplate
+  .firstElementChild
+  .cloneNode(true);
+
+WelcomeTabTemplate.remove();
+
+function OpenWelcomeTab() {
+  WelcomeTab = true;
+
+  const WelcomeTab = WelcomeTabPage.cloneNode(true);
+
+  WelcomeTab.id = "WelcomeTab" + WelcomeTabCounter;
+
+  const CloseButton = WelcomeTab.querySelector("#CloseButton");
+
+  CloseButton.onclick = function () {
+    WelcomeTab.remove();
+    RemoveFooterWelcomeApp();
+  };
+
+  document.body.appendChild(WelcomeTab);
+
+  dragElement(WelcomeTab);
+
+  if (WelcomeTab) {
+    var Tab = document.querySelector("#FooterWelcomeApp");
+    Tab.style.display = "flex"
+  }
+
+  WelcomeTabCounter++;
+}
+
+
+
+
+/****************************************************/
+
+var CalculatorTabCounter = 1;
+
+const CalculatorTabTemplate = document.querySelector("#CalculatorTabTemplate");
+
+const CalculatorTabHTML = CalculatorTabTemplate
+  .firstElementChild
+  .cloneNode(true);
+
+CalculatorTabTemplate.remove();
+
+function OpenCalculatorTab() {
+
+  const CalculatorTab = CalculatorTabHTML.cloneNode(true);
+
+  CalculatorTab.id = "CalculatorTab" + CalculatorTabCounter;
+
+  const CloseButton = CalculatorTab.querySelector("#CloseButton");
+
+  CloseButton.onclick = function () {
+    CalculatorTab.remove();
+  };
+
+  document.body.appendChild(CalculatorTab);
+
+  dragElement(CalculatorTab);
+
+  CalculatorTabCounter++;
+}
+
+/****************************************************/
+
+var CreditTabCounter = 1;
+
+const CreditTabTemplate = document.querySelector("#CreditTabTemplate");
+
+const CreditTabHTML = CreditTabTemplate
+  .firstElementChild
+  .cloneNode(true);
+
+CreditTabTemplate.remove();
+
+function OpenCreditTab() {
+
+  const CreditTab = CreditTabHTML.cloneNode(true);
+
+  CreditTab.id = "CreditTab" + CreditTabCounter;
+
+  const CloseButton = CreditTab.querySelector("#CloseButton");
+
+  CloseButton.onclick = function () {
+    CreditTab.remove();
+  };
+
+  document.body.appendChild(CreditTab);
+
+  dragElement(CreditTab);
+
+  CreditTabCounter++;
+}
+
+/****************************************************/
+
 function UpdateTime() {
+
   var currentTime = new Date().toLocaleString();
+
   var timeText = document.querySelector("#Time");
+
   timeText.innerHTML = currentTime;
 }
+
 setInterval(UpdateTime, 1000);
+
+
+/****************************************************/
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -28,58 +147,72 @@ async function Loading() {
   h1.innerText = "Welcome";
 }
 
+Loading();
+
+/****************************************************/
+
 function RemoveLoadingCompletely() {
-  LoadingScreen.style.display = 'none';
+
+  var LoadingScreen = document.querySelector(".Loading");
+
+  LoadingScreen.style.display = "none";
 }
 
+
 function RemoveLoading() {
+
   var LoadingScreen = document.querySelector(".Loading");
-  LoadingScreen.classList.add('fade-out');
+
+  if (!LoadingScreen) return;
+
+  LoadingScreen.classList.add("fade-out");
 
   setTimeout(RemoveLoadingCompletely, 2000);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener("DOMContentLoaded", function () {
+
   document.body.onkeyup = function (e) {
+
     if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+
       RemoveLoading();
+
     }
-  }
+
+  };
+
 });
 
-Loading()
 
 /****************************************************/
 
-
-// Make the DIV element draggable:
-
-dragElement(document.getElementById("WelcomeTab"));
-dragElement(document.getElementById("CalculatorTab"));
-dragElement(document.getElementById("CreditTab"));
-
 function dragElement(elmnt) {
 
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var pos1 = 0;
+  var pos2 = 0;
+  var pos3 = 0;
+  var pos4 = 0;
 
-  if (document.getElementById(elmnt.id + "WelcomeTab")) {
 
-    // The header is where you move the DIV from:
-    document.getElementById(elmnt.id + "WelcomeTab").onmousedown = dragMouseDown;
+  if (document.getElementById(elmnt.id + "header")) {
+
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
 
   } else {
 
-    // Otherwise, move the DIV from anywhere inside the DIV:
     elmnt.onmousedown = dragMouseDown;
 
   }
 
+
   function dragMouseDown(e) {
 
     e = e || window.event;
+
     e.preventDefault();
 
-    // Get the mouse position:
     pos3 = e.clientX;
     pos4 = e.clientY;
 
@@ -88,8 +221,11 @@ function dragElement(elmnt) {
 
   }
 
+
   function elementDrag(e) {
+
     e = e || window.event;
+
     e.preventDefault();
 
     pos1 = pos3 - e.clientX;
@@ -104,103 +240,32 @@ function dragElement(elmnt) {
     const headerHeight = 120;
 
     newTop = Math.max(newTop, headerHeight);
-    newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - elmnt.offsetWidth));
-    newTop = Math.min(newTop, window.innerHeight - elmnt.offsetHeight);
 
-    elmnt.style.top = (newTop - 120) + "px"; // offset for margin-top
+    newLeft = Math.max(
+      0,
+      Math.min(
+        newLeft,
+        window.innerWidth - elmnt.offsetWidth
+      )
+    );
+
+    newTop = Math.min(
+      newTop,
+      window.innerHeight - elmnt.offsetHeight
+    );
+
+    elmnt.style.top = (newTop - 120) + "px";
+
     elmnt.style.left = newLeft + "px";
+
   }
+
 
   function closeDragElement() {
 
-    // Stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
 
   }
 
-}
-
-/********************************************************/
-
-
-/******************************************************/
-
-function OpenWelcomeTab() {
-  var Tab = document.querySelector("#WelcomeTab")
-  Tab.style.display = "flex"
-
-  var element = document.querySelector(".Footer #WelcomeApp")
-  element.style.display = "flex"
-
-  tab.classList.remove("pop");
-  void tab.offsetWidth; // forces a reflow so the animation can replay
-  tab.classList.add("pop");
-}
-
-
-function MinimizeWelcomeTab() {
-  var element = document.querySelector("#WelcomeTab")
-  element.style.display = "none"
-}
-
-function CloseWelcomeTab() {
-  var element = document.querySelector("#WelcomeTab")
-  element.style.display = "none"
-
-    var element = document.querySelector(".Footer #WelcomeApp")
-  element.style.display = "none"
-}
-
-CloseWelcomeTab()
-
-
-/* * * * * * *  * * * * * ** * * * ** * ** */
-
-function MinimizeCalculatorTab() {
-  var element = document.querySelector("#CalculatorTab")
-  element.style.display = "none"
-}
-
-function CloseCalculatorTab() {
-  var element = document.querySelector("#CalculatorTab")
-  element.style.display = "none"
-
-    var element = document.querySelector(".Footer #CalculatorApp")
-  element.style.display = "none"
-}
-
-CloseCalculatorTab()
-
-function OpenCalculatorTab() {
-  var Tab = document.querySelector("#CalculatorTab")
-  Tab.style.display = "flex"
-
-  var element = document.querySelector(".Footer #CalculatorApp")
-  element.style.display = "flex"
-}
-
-/* * * * * * *  * * * * * ** * * * ** * ** */
-
-function MinimizeCreditTab() {
-  var element = document.querySelector("#CreditTab")
-  element.style.display = "none"
-}
-
-function CloseCreditTab() {
-  var element = document.querySelector("#CreditTab")
-  element.style.display = "none"
-
-    var element = document.querySelector(".Footer #CreditApp")
-  element.style.display = "none"
-}
-
-CloseCreditTab()
-
-function OpenCreditTab() {
-  var Tab = document.querySelector("#CreditTab")
-  Tab.style.display = "flex"
-
-  var element = document.querySelector(".Footer #CreditApp")
-  element.style.display = "flex"
 }
